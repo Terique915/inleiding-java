@@ -1,8 +1,8 @@
 package H10;
 
-import java.awt.*;
-import java.applet.*;
-import java.awt.event.*;
+        import java.awt.*;
+        import java.applet.*;
+        import java.awt.event.*;
 
 
 public class Opdracht103 extends Applet {
