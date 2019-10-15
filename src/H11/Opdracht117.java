@@ -20,6 +20,7 @@ public class Opdracht117 extends Applet {
        g.drawOval(60,60,480,480);
        g.drawOval(70,70,460,460);
        g.drawOval(80,80,460,460);
+       g.drawOval(90,90,440,440);
 
     }
 }
