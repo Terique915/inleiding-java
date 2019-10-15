@@ -10,9 +10,10 @@ public class Opdracht105 extends Applet {
 
     TextField textvak;
     Button OKbutton;
+    double cijfers;
     double gemiddelde;
-
     String invoerString;
+    String stringtext;
 
 
 
@@ -24,14 +25,15 @@ public class Opdracht105 extends Applet {
         OKbutton=new Button("OK");
         OKbutton.addActionListener(new OKbutton());
         add(OKbutton);
-        gemiddelde=1;
         invoerString=" ";
     }
 
     @Override
     public void paint(Graphics g) {
         g.drawString(invoerString,50,80);
-        g.drawString(String.valueOf(gemiddelde),50,50);
+        g.drawString(stringtext,200,80);
+        g.drawString(String.valueOf(cijfers),50,50);
+        g.drawString(String.valueOf(gemiddelde),200,50);
 
 
     }
@@ -41,17 +43,26 @@ public class Opdracht105 extends Applet {
         public void actionPerformed(ActionEvent e) {
             invoerString=textvak.getText();
             double cijfer=Double.parseDouble(invoerString);
+            cijfers=cijfer;
             if (cijfer<=5.4){
                 invoerString="onvoldoende";
 
             }
-            if(cijfer>=5.5){
+            if(cijfer>=5.5 && cijfer<=10){
                 invoerString="Voldoende";
             }
-            gemiddelde=cijfer;
 
 
-            repaint();
+
+
+            gemiddelde=(cijfer+gemiddelde)/2;
+            if(gemiddelde>=1 && gemiddelde<=5.4){
+               stringtext="niet geslaagd";
+            }
+            if(gemiddelde>=5.5 && gemiddelde<=10){
+                stringtext="geslaagd";
+            }
+                    repaint();
 
         }
     }
