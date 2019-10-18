@@ -55,7 +55,14 @@ public class Opdracht105 extends Applet {
 
 
 
-            gemiddelde=(cijfer+gemiddelde)/2;
+            gemiddelde=cijfer;
+            if(gemiddelde==cijfer){
+                gemiddelde=cijfer;
+                }
+            else {
+                gemiddelde=gemiddelde/2;
+
+            }
             if(gemiddelde>=1 && gemiddelde<=5.4){
                stringtext="niet geslaagd";
             }
