@@ -33,8 +33,8 @@ public class POH11 extends Applet {
             cijfer = Integer.parseInt(stringtext);
             switch (cijfer) {
                 case 1:
-                    tekst = "1x1=1";
-                    tekst=  "1x2=2";
+                    tekst = "slecht";
+
                     break;
 
                 case 2:

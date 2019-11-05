@@ -103,6 +103,7 @@ public class PraktijkOpdrachtH08 extends Applet {
             textvak.setText(String.valueOf(uitkomst));
             textvak2.setText("");
 
+
         }
     }
 
