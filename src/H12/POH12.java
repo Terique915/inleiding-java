@@ -5,38 +5,87 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
+@SuppressWarnings("serial")
 public class POH12 extends Applet {
-    TextField textvak;
-    TextField textvak2;
+    TextField nameField, numberField;
     Button okbutton;
-    String[] namen;
-    String[] nummers;
+    String namenArray[], numberArray[], error;
+    Label nameLabel, numberLabel;
+    boolean errorbericht;
+    int index , i;
 
-    @Override
-    public void init() {
-        textvak = new TextField("Namen",15);
-        add(textvak);
-        textvak2 = new TextField("Nummers",15);
-        add(textvak2);
-        okbutton = new Button("OK");
-        okbutton.addActionListener(new Okbutton());
-        add(okbutton);
+
+
+    public void init(){
+        setSize(500, 500);
+        error = "";
+        errorbericht = false;
+        index = 0;
+        i = 0;
+        namenArray = new String [10];
+        numberArray = new String [10];
+
+        nameLabel = new Label ("Naam");
+        add (nameLabel);
+        nameField = new TextField ("", 20);
+        add (nameField);
+
+        numberLabel = new Label (" Nummer");
+        add(numberLabel);
+        numberField = new TextField ("", 20);
+        add(numberField);
+
+        okbutton = new Button ("OK");
+        add (okbutton);
+        okbutton.addActionListener (new okButtonListener());
+
     }
 
-    @Override
-    public void paint(Graphics g) {
-        g.drawString(namen[10],50,100);
-        g.drawString(nummers[10],150,100);
-    }
 
-    class Okbutton implements ActionListener{
 
-        @Override
+    class okButtonListener implements ActionListener{
         public void actionPerformed(ActionEvent e) {
-            namen[10] = textvak.getText();
-            nummers[10] = textvak2.getText();
-            repaint();
+            namenArray[index] = nameField.getText ();
+            numberArray[index] = numberField.getText ();
+            if (!namenArray[index].equals ("") && !numberArray[index].equals ("")) {
+                if (index == 10) {
+                    for (i =0; i < namenArray.length; i++) {
+                        namenArray[i] = "";
+                    }
+                    for (i = 0; i < numberArray.length; i ++){
+                        namenArray[i] = "";
+                    }
+                }
+                index++;
+            }
+            else {
+                errorbericht = true;
+                error = "Eerst de naam en daarna de nummer";
+            }
+            nameField.setText("");
+            numberField.setText("");
+            repaint ();
         }
+    }
+    public void paint(Graphics g){
+        int y = 30;
+        if (errorbericht == false) {
+            if (index < 10) {
+                g.drawString (" " + index + " of 10", 50, 50);
+            }
+            if (index == 10) {
+                for (int i = 0; i < index; i++) {
+                    y += 20;
+                    g.drawString ("First name:  " + namenArray[i] + "   " + "Phone number:  " + numberArray[i], 35, y);
+                }
+                index = 0;
 
+            }
+        } else {
+            g.drawString (" " + index + "of 10",50   ,50 );
+            g.drawString ("" + error, 50, 80);
+            errorbericht = false;
+        }
     }
 }
