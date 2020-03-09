@@ -12,31 +12,37 @@ public class POH13 extends Applet {
     @Override
     public void paint(Graphics g) {
 
-            int x = 30;
-            int y = 50;
-            int width = 80;
-            int height = 80;
-            int xstam = 50;
-            int ystam = 130;
-            int widthstam = 40;
-            int heightstam = 100;
-            for (int kolom = 0; kolom < 5; kolom++) {
-                if (kolom == 0 || kolom == 2 || kolom == 4 || kolom == 6) {
-                    tekenBoom(g, x, y, width, height, xstam, ystam, widthstam, heightstam);
-
-                }
-                x= 60;
-                x +=50;
-                xstam = 68;
-                xstam +=60;
-
+        int x = 35;
+        int y = 110;
+        int xc = 10;
+        int yc = 40;
+        int width = 20;
+        int height = 100;
+        int widthc = 70;
+        int heightc = 70;
+        for (int i = 0; i < 5; i++) {
+            tekenboom(g, x, y, xc, yc, width, height, widthc, heightc);
+            y++;
+            yc++;
+            x+=100;
+            xc+=100;
         }
-        tekenBoom(g, x, y, width, height, xstam, ystam, widthstam, heightstam);
+        tekenboom(g, x-500, y+200, xc-500, yc+200, width, height, widthc, heightc);
+        tekenboom(g, x-400, y+200, xc-400, yc+200, width, height, widthc, heightc);
+        tekenboom(g, x-300, y+200, xc-300, yc+200, width, height, widthc, heightc);
+        tekenboom(g, x-200, y+200, xc-200, yc+200, width, height, widthc, heightc);
+        tekenboom(g, x-100, y+200, xc-100, yc+200, width, height, widthc, heightc);
+
+
+
+
+
+
     }
 
-    void tekenBoom(Graphics g, int x, int y, int width,  int height, int xstam, int ystam, int widthstam, int heightstam){
-        g.drawOval(x,y,width,height);
-        g.drawRect(xstam,ystam,widthstam,heightstam);
+    void tekenboom(Graphics g, int x, int y, int xc, int yc ,int width, int height, int widthc, int heightc){
+        g.drawRect(x,y,width,height);
+        g.drawOval(xc,yc,widthc,heightc);
 
     }
 }
